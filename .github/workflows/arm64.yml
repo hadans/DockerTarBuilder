@@ -15,7 +15,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
+      
+    - name: Docker LOGIN
+      run: |
+          DOCKER_USERNAME="1010191734@qq.com"
+          DOCKER_PASSWORD="asrbot@01"
+          docker login -u ${DOCKER_USERNAME} -p $DOCKER_PASSWORD
+          
     - name: Pull Docker Images and Package
       run: |
         images="${{ github.event.inputs.docker_images }}"
