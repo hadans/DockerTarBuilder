@@ -19,7 +19,13 @@ jobs:
       run: |
           docker system prune -a -f
           docker volume prune -f
-
+          
+    - name: Docker LOGIN
+      run: |
+          DOCKER_USERNAME="1010191734@qq.com"
+          DOCKER_PASSWORD="asrbot@01"
+          docker login -u ${DOCKER_USERNAME} -p $DOCKER_PASSWORD
+          
     - name: Pull Docker Images and Package
       run: |
         images="${{ github.event.inputs.docker_images }}"
